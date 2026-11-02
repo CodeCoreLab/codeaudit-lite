@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodeAudit Lite · 更新日志</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563EB'/%3E%3Cpath d='M10 12l-4 4 4 4M22 12l4 4-4 4M18 9l-4 14' stroke='%23fff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --primary:#2563EB;--primary-600:#1D4ED8;--primary-50:#EFF6FF;--primary-100:#DBEAFE;
+  --canvas:#FAF7F2;--surface:#FFFFFF;--surface-2:#F5F2EC;
+  --hairline:rgba(30,41,59,.09);--hairline-strong:rgba(30,41,59,.16);
+  --ink:#1E293B;--ink-soft:#475569;--ink-muted:#63738A;--ink-subtle:#67727F;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s8:32px;--s10:40px;--s12:48px;
+  --r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:22px;--r-full:9999px;
+  --e1:0 1px 2px rgba(15,23,42,.05),0 4px 16px rgba(15,23,42,.06);
+  --maxw:860px;--nav-h:64px;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,sans-serif;
+  font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;line-height:1.3;letter-spacing:-.02em}
+p{margin:0}
+code{font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;background:var(--surface-2);
+  padding:1.5px 6px;border-radius:4px;border:1px solid var(--hairline)}
+.wrap{width:min(100% - 32px,var(--maxw));margin-inline:auto}
+.nav{position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;
+  background:rgba(250,247,242,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--hairline)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+.logo-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#2563EB,#06B6D4);
+  display:grid;place-items:center;color:#fff}
+.back{font-size:13.5px;font-weight:650;color:var(--ink-soft);padding:7px 14px;border-radius:var(--r-full);
+  border:1px solid var(--hairline-strong);transition:all .18s}
+.back:hover{color:var(--primary-600);border-color:var(--primary);background:var(--primary-50)}
+main{padding:var(--s8) 0 var(--s12)}
+h1{font-size:clamp(26px,4vw,34px);font-weight:900;margin-bottom:var(--s2)}
+.sub{color:var(--ink-muted);font-size:14px;margin-bottom:var(--s8)}
+.entry{background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-lg);
+  padding:var(--s6);margin-bottom:var(--s5);box-shadow:var(--e1)}
+.entry-head{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap;margin-bottom:var(--s4)}
+.ver{font-size:15px;font-weight:800;font-family:"Cascadia Mono",Consolas,monospace}
+.date{font-size:12.5px;color:var(--ink-muted)}
+.cur{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--primary-600);
+  background:var(--primary-50);border:1px solid rgba(37,99,235,.25);padding:2px 10px;border-radius:var(--r-full)}
+.entry ul{margin:0;padding:0;list-style:none}
+.entry li{position:relative;padding:5px 0 5px 22px;font-size:14px;color:var(--ink-soft)}
+.entry li::before{content:"";position:absolute;left:4px;top:.85em;width:6px;height:6px;
+  border-radius:2px;background:var(--primary);opacity:.75}
+.entry li b{color:var(--ink)}
+footer{border-top:1px solid var(--hairline);padding:var(--s6) 0;color:var(--ink-muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <span class="logo"><span class="logo-mark">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </span>CodeAudit Lite</span>
+  <a class="back" href="index.html">← 返回工具页</a>
+</div></header>
+
+<main class="wrap">
+  <h1>更新日志</h1>
+  <p class="sub">CodeAudit Lite 的版本沿革。语义化版本：破坏性变更升主版本，规则/功能新增升次版本，修复升修订号。</p>
+
+  <div class="entry">
+    <div class="entry-head">
+      <span class="ver">v1.0.0</span><span class="date">2026-11-02</span><span class="cur">当前版本</span>
+    </div>
+    <ul>
+      <li><b>首发</b>：37 条静态规则 × P0-P3 四级分级，覆盖 JS/TS · Python · Go · Java · SQL · 通用文本。</li>
+      <li><b>核心能力</b>：凭据泄露检测（AK/SK · 数据库连接串 · PAT · JWT · 私钥块）、注入类（SQL 拼接 / 命令拼接 / XSS / 动态执行）、反序列化（pickle / yaml.load）、并发与可靠性（无超时 HTTP 客户端 / 吞异常 / 长 sleep 轮询）。</li>
+      <li><b>占位符去伪</b>：secret 类规则自动识别 <code>&lt;TOKEN&gt;</code> / <code>${ENV_VAR}</code> / 全大写蛇形占位，杜绝"假凭据"误报。</li>
+      <li><b>健康评分</b>：加权扣分制（P0 -2.5 / P1 -1.5 / P2 -0.5 / P3 -0.1），2000 行基线归一化，1-10 分量化交付质量。</li>
+      <li><b>交互</b>：拖拽文件/文件夹载入（最多 300 个、单文件 ≤2MB、二进制与依赖目录自动跳过）、严重度卡片过滤、关键词实时过滤、Markdown 报告一键导出。</li>
+      <li><b>隐私</b>：纯浏览器 File API 本地分析，无网络请求、无后端、无遥测。</li>
+    </ul>
+  </div>
+</main>
+
+<footer><div class="wrap">CodeAudit Lite v1.0.0 · 本地静态组件</div></footer>
+</body>
+</html>
