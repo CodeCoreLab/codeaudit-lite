@@ -288,9 +288,15 @@
     var m = excerpt.match(/[:=]\s*['"]?([^'"]*)['"]?\s*$/);
     var v = (excerpt.match(/Bearer\s+(\S+)/i) || [])[1] || (m ? m[1] : '');
     if (!v) return false;
+    // 真实云厂商 Access Key 前缀：绝不能当占位符跳过。
+    // AWS AKIA/ASIA/ABIA/ACCA + 16 位大写字母数字，与「全大写蛇形常量」形态完全重合，
+    // 若靠通用蛇形规则去伪，UNIV-01 对所有真实 AWS 凭据系统性漏报。
+    if (/^(?:AKIA|ASIA|ABIA|ACCA|AGPA|AIDA|AIPA|ANPA|ANVA|AROA)[0-9A-Z]{12,}$/.test(v)) return false;
     if (/^<[^>]+>$/.test(v)) return true;            // <PLACEHOLDER>
     if (/^\$\{[^}]+\}$/.test(v)) return true;        // ${ENV_VAR}
-    if (/^[A-Z][A-Z0-9_]{5,}$/.test(v)) return true; // 全大写蛇形
+    // 全大写蛇形（常量名形态）：必须**含下划线**才当占位符。
+    // 原实现 `^[A-Z][A-Z0-9_]{5,}$` 把纯大写字母数字串也吃进来 → 真实云凭据被跳过。
+    if (/^[A-Z][A-Z0-9]*(_[A-Z0-9]+)+$/.test(v)) return true;
     if (/^(?:your|xxx|dummy|sample|example)[-_]/i.test(v)) return true;
     if (/^(\.\.\.|…)/.test(v)) return true;
     return false;
